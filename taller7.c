@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #define TAMANO 7
-#define edadMin 10 
+#define edadMin 10
 #define edadMax 65
 
 #define pesoMin 50.0f
@@ -32,18 +32,18 @@ Persona *crearPersona(char *nombre, int edad, int peso){
 
 	nuevo->hijos = NULL;
 
-	return nuevo; //*se retornaba la direccion del puntero, no el puntero 					
+	return nuevo; //*se retornaba la direccion del puntero, no el puntero
 }
 
 
 int anadirHijo(Persona *padre, Persona *hijo){
-	
+
 	ListaHijos *lista_hijos = padre->hijos;
 
 	if(lista_hijos == NULL){
 		ListaHijos *lista = (ListaHijos *)malloc(sizeof(ListaHijos));
 		if(lista == NULL){
-			return -1;		
+			return -1;
 		}
 		lista->per = hijo;
 		lista->siguiente = NULL;
@@ -53,24 +53,24 @@ int anadirHijo(Persona *padre, Persona *hijo){
 
 	else{
 		while(lista_hijos != NULL){
-		
+
 			if(lista_hijos->siguiente == NULL){
 				break;
 			}
 			lista_hijos = lista_hijos->siguiente;
 		}
 
-					
+
 		ListaHijos *nuevo = (ListaHijos *)malloc(sizeof(ListaHijos));
 		if(nuevo == NULL){
-			return -1;		
+			return -1;
 		}
 		nuevo->per = hijo;
 		nuevo->siguiente = nuevo;
 		lista_hijos->siguiente = nuevo;
 		nuevo->siguiente = NULL; //Falta que el siguiente del hijo nuevo apunte a NULL
-		return 0;	
-		
+		return 0;
+
 	}
 	return -1;
 }
@@ -101,7 +101,7 @@ int main(void){
 
 	int i = 0;
 
-	for(i = 0; i <= TAMANO; i++){			
+	for(i = 0; i < TAMANO; i++){ //Se estaban creando mas personas de las que se pueden almacenar por la condicion del for			
 
 		int edad = edadMin + rand() / (RAND_MAX / (edadMax - edadMin + 1) + 1);
 		int peso = pesoMin + rand() / (RAND_MAX / (pesoMax - pesoMin + 1) + 1);
@@ -115,7 +115,7 @@ int main(void){
 	anadirHijo(listaPersona[3], listaPersona[6]);
 	anadirHijo(listaPersona[4], listaPersona[5]);
 
-	for(i = 0; i < TAMANO; i++){			
+	for(i = 0; i < TAMANO; i++){
 
 		mostrarInfoPersona(listaPersona[i]);
 		printf("\n");

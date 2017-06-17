@@ -101,7 +101,7 @@ int main(void){
 
 	int i = 0;
 
-	for(i = 0; i < TAMANO; i++){ //Se estaban creando mas personas de las que se pueden almacenar por la condicion del for			
+	for(i = 0; i < TAMANO; i++){ //Se estaban creando mas personas de las que se pueden almacenar por la condicion del for
 
 		int edad = edadMin + rand() / (RAND_MAX / (edadMax - edadMin + 1) + 1);
 		int peso = pesoMin + rand() / (RAND_MAX / (pesoMax - pesoMin + 1) + 1);
@@ -115,7 +115,7 @@ int main(void){
 	anadirHijo(listaPersona[3], listaPersona[6]);
 	anadirHijo(listaPersona[4], listaPersona[5]);
 
-	for(i = 0; i < TAMANO; i++){
+	for(i = 0; i < TAMANO; i++){ //El for tenia mal la condicion ya que tomaba un idice fuera del arreglo y causaba el error
 
 		mostrarInfoPersona(listaPersona[i]);
 		printf("\n");
